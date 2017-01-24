@@ -20,7 +20,7 @@ with open('buildings.txt', 'r') as file:
 		print(',' + re.split('\[|\]', str(buildings))[1] + '\n')	
 	for b in buildings:
 		i = i + 1
-		if i > 6:	
+		if i > 27:	
 			with open('distances.txt', 'w') as out:
 				browser = webdriver.Chrome()
 				browser.get('https://www.washington.edu/maps/')
@@ -54,10 +54,10 @@ with open('buildings.txt', 'r') as file:
 						search_destination.send_keys(b2 + Keys.RETURN)
 						result = browser.find_element(By.CLASS_NAME, 'search-result')
 						result.click()
-						time.sleep(0.4)
+						time.sleep(0.8)
 						details = browser.find_element(By.CLASS_NAME, 'print').text	
 						if details == prev_details:
-							time.sleep(0.8)
+							time.sleep(1.6)
 							search_current.clear()
 							search_current.send_keys(b + Keys.RETURN)
 							result = browser.find_element(By.CLASS_NAME, 'search-result')
@@ -66,13 +66,16 @@ with open('buildings.txt', 'r') as file:
 							search_destination.send_keys(b2 + Keys.RETURN)
 							result = browser.find_element(By.CLASS_NAME, 'search-result')
 							result.click()
-							time.sleep(0.4)
+							time.sleep(0.8)
 							details = browser.find_element(By.CLASS_NAME, 'print').text
 						if details == prev_details:
 							error = error + 1
 						prev_details = details
 						output = details.split(' ')
-						output = output[0] + ' ' +  output[4]
+						try:
+							output = output[0] + ' ' +  output[4]
+						except:
+							output = 'error'
 						row = row + output + ','
 					else:
 						row = row + ","
