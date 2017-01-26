@@ -20,7 +20,7 @@ with open('buildings.txt', 'r') as file:
 		print(',' + re.split('\[|\]', str(buildings))[1] + '\n')	
 	for b in buildings:
 		i = i + 1
-		if i > 27:	
+		if i > 77:	
 			with open('distances.txt', 'w') as out:
 				browser = webdriver.Chrome()
 				browser.get('https://www.washington.edu/maps/')

@@ -36,7 +36,7 @@ codes = site.find('div', {'class', 'container uw-body'}).findAll('code')
 	#except:
 		#print(c.text + ' error')
 
-url = "https://www.washington.edu/students/timeschd/SPR2017/"
+url = "https://www.washington.edu/students/timeschd/WIN2017/"
 site = bs(urlopen(url).read(), "html.parser")
 
 links = site.findAll('a')#.next_sibling().findAll('li')
